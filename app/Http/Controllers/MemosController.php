@@ -15,6 +15,6 @@ class MemosController extends Controller
     public function index()
     {
         $memos = Memo::all();
-        return $memos;
+        return view('memos.index', compact('memos'));
     }
 }
