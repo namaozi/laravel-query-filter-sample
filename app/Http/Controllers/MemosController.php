@@ -15,6 +15,7 @@ class MemosController extends Controller
     public function index()
     {
         $memos = Memo::tagFilter(request('tag'))
+            ->searchTitle(request('word'))
             ->get();
         return view('memos.index', compact('memos'));
     }
