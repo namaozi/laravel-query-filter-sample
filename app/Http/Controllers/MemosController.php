@@ -14,7 +14,8 @@ class MemosController extends Controller
      */
     public function index()
     {
-        $memos = Memo::all();
+        $memos = Memo::tagFilter(request('tag'))
+            ->get();
         return view('memos.index', compact('memos'));
     }
 }
