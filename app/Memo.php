@@ -22,4 +22,18 @@ class Memo extends Model
         }
         return $query;
     }
+
+    /**
+     * タイトルで検索する
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $word
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearchTitle($query, ?string $word)
+    {
+        if (!is_null($word)) {
+            return $query->where('title', 'like', '%' . $word . '%');
+        }
+        return $query;
+    }
 }
